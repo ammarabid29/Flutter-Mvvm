@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/res/components/round_button_widget.dart';
-import 'package:flutter_mvvm/utils/utils.dart';
+import 'package:flutter_mvvm/res/colors/app_color.dart';
+import 'package:flutter_mvvm/view_models/services/splash_services.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -11,37 +11,26 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  SplashServices splashServices = SplashServices();
+
+  @override
+  void initState() {
+    super.initState();
+    splashServices.isLogin();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("email_hint".tr),
-      ),
-      // body: InternetExceptionWidget(
-      //   onPress: () {},
-      // ),
+      backgroundColor: AppColors.secondaryColor,
       body: Center(
-        child: Column(
-          children: [
-            RoundButtonWidget(
-              title: "Login",
-              onPress: () {},
-              width: 200,
-              loading: true,
-            ),
-            const SizedBox(height: 30),
-            RoundButtonWidget(
-              title: "Signup",
-              onPress: () {},
-              width: 140,
-            ),
-          ],
+        child: Text(
+          "welcome_back".tr,
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(color: AppColors.textSecondaryColor),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Utils.toastMessageCenter("Ammar");
-        },
       ),
     );
   }

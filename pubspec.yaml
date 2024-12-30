@@ -81,7 +81,7 @@ flutter:
   fonts:
     - family: Roboto-Regular 
       fonts:
-      - asset: fonts/Roboto-Regular.ttf
+      - asset: assets/fonts/Roboto-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
