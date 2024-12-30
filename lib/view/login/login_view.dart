@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/res/components/round_button_widget.dart';
 import 'package:flutter_mvvm/utils/utils.dart';
-import 'package:flutter_mvvm/view_models/controller/login_view_model.dart';
+import 'package:flutter_mvvm/view_models/controller/login/login_view_model.dart';
 import 'package:get/get.dart';
 
 class LoginView extends StatefulWidget {
@@ -43,7 +43,6 @@ class _LoginViewState extends State<LoginView> {
                       if (value!.isEmpty) {
                         Utils.snackBar("Email", "Enter email");
                       }
-                      return null;
                     },
                     onFieldSubmitted: (value) {
                       Utils.feildFocusMode(
@@ -64,7 +63,6 @@ class _LoginViewState extends State<LoginView> {
                       if (value!.isEmpty) {
                         Utils.snackBar("Password", "Enter password");
                       }
-                      return null;
                     },
                   ),
                 ],
