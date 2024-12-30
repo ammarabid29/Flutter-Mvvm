@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/res/components/round_button_widget.dart';
-import 'package:flutter_mvvm/utils/utils.dart';
+import 'package:flutter_mvvm/view/login/widgets/email_input_widget.dart';
+import 'package:flutter_mvvm/view/login/widgets/login_button_widget.dart';
+import 'package:flutter_mvvm/view/login/widgets/password_input_widget.dart';
 import 'package:flutter_mvvm/view_models/controller/login/login_view_model.dart';
 import 'package:get/get.dart';
 
@@ -33,53 +34,15 @@ class _LoginViewState extends State<LoginView> {
               key: _formKey,
               child: Column(
                 children: [
-                  TextFormField(
-                    controller: loginVM.emailController.value,
-                    focusNode: loginVM.emailFocusNode.value,
-                    decoration: InputDecoration(
-                        hintText: "email_hint".tr,
-                        border: const OutlineInputBorder()),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        Utils.snackBar("Email", "Enter email");
-                      }
-                    },
-                    onFieldSubmitted: (value) {
-                      Utils.feildFocusMode(
-                          context,
-                          loginVM.emailFocusNode.value,
-                          loginVM.passwordFocusNode.value);
-                    },
-                  ),
+                  EmailInputWidget(),
                   const SizedBox(height: 20),
-                  TextFormField(
-                    controller: loginVM.passwordController.value,
-                    focusNode: loginVM.passwordFocusNode.value,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        hintText: "password_hint".tr,
-                        border: const OutlineInputBorder()),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        Utils.snackBar("Password", "Enter password");
-                      }
-                    },
-                  ),
+                  PasswordInputWidget(),
                 ],
               ),
             ),
             const SizedBox(height: 40),
-            Obx(
-              () => RoundButtonWidget(
-                loading: loginVM.loading.value,
-                title: "login".tr,
-                onPress: () {
-                  if (_formKey.currentState!.validate()) {
-                    loginVM.loginApi();
-                  }
-                },
-                width: 200,
-              ),
+            LoginButtonWidget(
+              formKey: _formKey,
             )
           ],
         ),
